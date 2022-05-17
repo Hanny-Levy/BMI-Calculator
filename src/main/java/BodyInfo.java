@@ -21,9 +21,7 @@ public class BodyInfo extends JPanel implements ActionListener {
         this.add(actualWeightLabel);
         this.actualWeightField=new TextField(Def.START_X,140);
         this.add(actualWeightField);
-        this.actualWeightField.addActionListener(e -> {
 
-        });
 
         this.setHeightSlider();
         this.setPreferredSize(Def.PANEL_DIMENSION);
@@ -84,7 +82,6 @@ public class BodyInfo extends JPanel implements ActionListener {
 
         this.small.addActionListener(this);
         this.medium.addActionListener(this);
-        this.large.addActionListener(this);
         this.large.addActionListener(this);
 
         this.add (small);
