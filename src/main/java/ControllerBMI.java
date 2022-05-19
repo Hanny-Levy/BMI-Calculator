@@ -1,3 +1,5 @@
+import javax.swing.*;
+import javax.swing.plaf.OptionPaneUI;
 import java.util.InputMismatchException;
 
 public class ControllerBMI   {
@@ -8,7 +10,13 @@ public class ControllerBMI   {
 
 
             viewBMI.submit.addActionListener(e -> {
+                if (viewBMI.personalInfoPanel.getFirstNameF().isEmpty() ||viewBMI.personalInfoPanel.getLastNameF().isEmpty()||viewBMI.personalInfoPanel.getGenderGroup()==null){
+                    JOptionPane.showMessageDialog(viewBMI,"You are missing one or more parameters , please complete them.");
+
+                }else
                 try {
+                    // Setting the calculation for the BMI
+
                     double height = viewBMI.bodyInfoPanel.getPersonalHeight();
                     viewBMI.bmiResult.bmi = (viewBMI.bodyInfoPanel.getWeight() / (Math.pow(height, 2)));
                     viewBMI.bmiResult.bmiLabel.setText("BMI: " + String.format("%.2f", viewBMI.bmiResult.bmi));
@@ -17,8 +25,10 @@ public class ControllerBMI   {
                     height *= 100;
                     double idealWeight = (((height - 100 + (viewBMI.personalInfoPanel.getAge() / 10)) * 0.9 * viewBMI.bodyInfoPanel.getSlimness()) * 100) / 100;
                     viewBMI.bmiResult.idealWeightLabel.setText("Your ideal weight: " + idealWeight);
+
                 } catch (NullPointerException | NumberFormatException exception){
-        }
+                    JOptionPane.showMessageDialog(viewBMI,"Invalid input please try again");
+                  }
             });
 
 

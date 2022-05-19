@@ -28,16 +28,10 @@ public class BMIResult extends JPanel {
 
     }
 
-    // Setting the calculation for the BMI
 
 
 
-    public void validParameters(ViewBMI viewBMI, String firstName , String lastName , ButtonModel gender , double slimness ){
-        if (firstName==null || lastName==null || gender==null || slimness==0){
-            JOptionPane.showMessageDialog(viewBMI,"You are missing one or more parameters !");
 
-        }
-    }
 
     // Setting the weight status
     public void setWeightStatus() {
