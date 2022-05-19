@@ -1,9 +1,6 @@
 import javax.swing.*;
-import javax.swing.plaf.OptionPaneUI;
-import java.util.InputMismatchException;
 
 public class ControllerBMI   {
-    ViewBMI viewBMI = new ViewBMI();
 
     public static void main(String[] args) {
         ViewBMI viewBMI = new ViewBMI();
@@ -44,15 +41,9 @@ public class ControllerBMI   {
                 }
         );
 
-        viewBMI.bodyInfoPanel.small.addActionListener(e -> {
-            viewBMI.bodyInfoPanel.setSlimness(ModelBMI.SMALL);
-        });
-        viewBMI.bodyInfoPanel.medium.addActionListener(e -> {
-            viewBMI.bodyInfoPanel.setSlimness(ModelBMI.MEDIUM);
-        });
-        viewBMI.bodyInfoPanel.large.addActionListener(e -> {
-            viewBMI.bodyInfoPanel.setSlimness(ModelBMI.LARGE);
-        });
+        viewBMI.bodyInfoPanel.small.addActionListener(e -> viewBMI.bodyInfoPanel.setSlimness(ModelBMI.SMALL));
+        viewBMI.bodyInfoPanel.medium.addActionListener(e -> viewBMI.bodyInfoPanel.setSlimness(ModelBMI.MEDIUM));
+        viewBMI.bodyInfoPanel.large.addActionListener(e -> viewBMI.bodyInfoPanel.setSlimness(ModelBMI.LARGE));
 
 }
 
