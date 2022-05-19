@@ -2,39 +2,41 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BMIResult extends JPanel {
-    private double bmi ;
-    private final Label bmiLabel;
-    private final Label weightStatusLabel;
-    private final Label idealWeightLabel;
-    private WeightStatus weightStatus;
+     double bmi ;
+     final Label bmiLabel;
+     final Label weightStatusLabel;
+     final Label idealWeightLabel;
+     WeightStatus weightStatus;
     private final Pictures pictures;
 
 
+
+
     public BMIResult(){
-        this.setPreferredSize(new Dimension(Def.PANEL_WIDTH-20 , Def.PANEL_HEIGHT));
-        this.setBackground(Def.LIGHT_PURPLE);
+        this.setPreferredSize(new Dimension(ModelBMI.PANEL_WIDTH-20 , ModelBMI.PANEL_HEIGHT));
+        this.setBackground(ModelBMI.LIGHT_PURPLE);
         this.setLayout(null);
         this.pictures =new Pictures();
         this.bmiLabel=new Label("",10,20);
         this.add(bmiLabel);
         this.weightStatusLabel=new Label("");
-        this.weightStatusLabel.setBounds(10,50,Def.PANEL_WIDTH,Def.LABEL_HEIGHT);
+        this.weightStatusLabel.setBounds(10,50, ModelBMI.PANEL_WIDTH, ModelBMI.LABEL_HEIGHT);
         this.add(weightStatusLabel);
         this.idealWeightLabel=new Label("");
-        this.idealWeightLabel.setBounds(10,80,Def.PANEL_WIDTH,Def.LABEL_HEIGHT);
+        this.idealWeightLabel.setBounds(10,80, ModelBMI.PANEL_WIDTH, ModelBMI.LABEL_HEIGHT);
         this.add(idealWeightLabel);
 
     }
 
     // Setting the calculation for the BMI
-    public void submit(double height , double weight , double slimness, Double age){
-        this.bmi=(weight/(Math.pow(height,2)));
-        this.bmiLabel.setText("BMI: "+String.format("%.2f", this.bmi));
-        this.setWeightStatus();
-        this.weightStatusLabel.setText("Weight status: "+this.weightStatus.toString());
-        height*=100;
-        double idealWeight = (((height - 100 + (age / 10)) * 0.9 * slimness) * 100) / 100;
-        this.idealWeightLabel.setText("Your ideal weight: "+ idealWeight);
+
+
+
+    public void validParameters(ViewBMI viewBMI, String firstName , String lastName , ButtonModel gender , double slimness ){
+        if (firstName==null || lastName==null || gender==null || slimness==0){
+            JOptionPane.showMessageDialog(viewBMI,"You are missing one or more parameters !");
+
+        }
     }
 
     // Setting the weight status
@@ -70,5 +72,6 @@ public class BMIResult extends JPanel {
         super.paint(graphics);
         pictures.paint(graphics,this);
     }
+
 
 }

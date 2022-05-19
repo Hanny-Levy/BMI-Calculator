@@ -1,16 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class Main extends JFrame implements ActionListener {
+public class ViewBMI extends JFrame {
 
 
-    public static void main(String[] args) {
-        new Main();
-    }
 
-    public Main(){
+
+    public ViewBMI(){
         this.setFrame();
         this.setPrimaryPanel();
         this.setVisible(true);
@@ -18,15 +14,17 @@ public class Main extends JFrame implements ActionListener {
     }
 
     private JPanel sendInfoPanel ;
-    private PersonalInfo personalInfoPanel;
-    private BodyInfo bodyInfoPanel;
-    private BMIResult bmiResult;
+    public PersonalInfo personalInfoPanel;
+    public BodyInfo bodyInfoPanel;
+    public BMIResult bmiResult;
+    public JButton clear ,submit ;
+
 
     public void setPrimaryPanel(){
         // Setting Primary panel
         JPanel primaryPanel = new JPanel();
         primaryPanel.setLayout(new BorderLayout());
-        primaryPanel.setSize(new Dimension(Def.PANEL_WIDTH, Def.PANEL_HEIGHT));
+        primaryPanel.setSize(new Dimension(ModelBMI.PANEL_WIDTH, ModelBMI.PANEL_HEIGHT));
 
         this.getContentPane().add(primaryPanel);
 
@@ -50,37 +48,22 @@ public class Main extends JFrame implements ActionListener {
         this.setTitle("BMI Calculator");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.setSize(new Dimension(Def.FRAME_WIDTH, Def.FRAME_HEIGHT));
+        this.setSize(new Dimension(ModelBMI.FRAME_WIDTH, ModelBMI.FRAME_HEIGHT));
 
 
     }
 
     public void setSendInfoPanel(){
         // Setting buttons reset and submit and adding them to sentInfo panel and to primary panel.
-        JButton clear = new JButton("Reset");
-        clear.addActionListener( this);
-        JButton submit = new JButton("Submit");
-        submit.addActionListener(e -> {
-                    try {
-                        bmiResult.submit(bodyInfoPanel.getPersonalHeight(), bodyInfoPanel.getWeight(), bodyInfoPanel.getSlimness(), personalInfoPanel.getAge());
-                    } catch (NumberFormatException | NullPointerException exception) {
-                        this.bodyInfoPanel.addMessage();
-                    }
-                }
-        );
+        clear = new JButton("Reset");
+        submit = new JButton("Submit");
+
 
         this.sendInfoPanel=new JPanel();
         this.sendInfoPanel.add(clear);
         this.sendInfoPanel.add(submit);
-        this.sendInfoPanel.setBackground(Def.DARK_PURPLE);
+        this.sendInfoPanel.setBackground(ModelBMI.DARK_PURPLE);
 
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        this.personalInfoPanel.reset();
-        this.bodyInfoPanel.reset();
-        this.bmiResult.reset();
     }
 
 

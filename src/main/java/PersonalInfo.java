@@ -9,42 +9,42 @@ public class PersonalInfo extends JPanel {
 
     public PersonalInfo() {
         this.setLayout(null);
-        this.setBackground(Def.LIGHT_PURPLE);
+        this.setBackground(ModelBMI.LIGHT_PURPLE);
 
-        Label firstNameL = new Label("First Name:", Def.START_X, 20);
+        Label firstNameL = new Label("First Name:", ModelBMI.START_X, 20);
         this.add(firstNameL);
-        this.firstNameF=new TextField(Def.START_X,50);
+        this.firstNameF=new TextField(ModelBMI.START_X,50);
         this.add(firstNameF);
 
-        Label lastNameL = new Label("Last Name:", Def.START_X, 80);
+        Label lastNameL = new Label("Last Name:", ModelBMI.START_X, 80);
         this.add(lastNameL);
-        this.lastNameF=new TextField(Def.START_X,110);
+        this.lastNameF=new TextField(ModelBMI.START_X,110);
         this.add(lastNameF);
 
-        Label ageL = new Label("Age:", Def.START_X, 140);
+        Label ageL = new Label("Age:", ModelBMI.START_X, 140);
         this.add(ageL);
-        this.ageF=new TextField(Def.START_X,170);
+        this.ageF=new TextField(ModelBMI.START_X,170);
         this.add(ageF);
 
-        Label gender = new Label("Gender :", Def.START_X, 200);
+        Label gender = new Label("Gender :", ModelBMI.START_X, 200);
         this.add(gender);
 
         JRadioButton female = new JRadioButton("female");
-        female.setBounds(Def.START_X,230,Def.LABEL_WIDTH,Def.LABEL_HEIGHT);
+        female.setBounds(ModelBMI.START_X,230, ModelBMI.LABEL_WIDTH, ModelBMI.LABEL_HEIGHT);
         JRadioButton male = new JRadioButton("male");
-        male.setBounds(Def.START_X,250,Def.LABEL_WIDTH,Def.LABEL_HEIGHT);
+        male.setBounds(ModelBMI.START_X,250, ModelBMI.LABEL_WIDTH, ModelBMI.LABEL_HEIGHT);
 
         this.genderGroup = new ButtonGroup();
         this.genderGroup.add (female);
         this.genderGroup.add (male);
 
-        female.setBackground(Def.LIGHT_PURPLE);
-        male.setBackground(Def.LIGHT_PURPLE);
+        female.setBackground(ModelBMI.LIGHT_PURPLE);
+        male.setBackground(ModelBMI.LIGHT_PURPLE);
 
         this.add (female);
         this.add (male);
 
-        this.setPreferredSize(Def.PANEL_DIMENSION);
+        this.setPreferredSize(ModelBMI.PANEL_DIMENSION);
 
 
     }
@@ -61,5 +61,17 @@ public class PersonalInfo extends JPanel {
     public double getAge() {
         String text = ageF.getText();
         return Double.parseDouble(text);
+    }
+
+    public String getFirstNameF() {
+        return firstNameF.getText();
+    }
+
+    public String getLastNameF() {
+        return lastNameF.getText();
+    }
+
+    public ButtonModel getGenderGroup() {
+        return genderGroup.getSelection();
     }
 }
