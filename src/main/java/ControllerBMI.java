@@ -8,31 +8,30 @@ public class ControllerBMI   {
 
             viewBMI.submit.addActionListener(e -> {
                 if (viewBMI.personalInfoPanel.getFirstNameF().isEmpty() ||viewBMI.personalInfoPanel.getLastNameF().isEmpty()||viewBMI.personalInfoPanel.getGenderGroup()==null){
-                    JOptionPane.showMessageDialog(viewBMI,"You are missing one or more parameters , please complete them.");
+                    viewBMI.showMessageDialog(ModelBMI.ERROR_CODE_PERSONAL_DETAILS_NOT_FOUND);
 
                 }else
                 try {
                     // Setting the calculation for the BMI
-
                     double height = viewBMI.bodyInfoPanel.getPersonalHeight();
                     viewBMI.bmiResult.bmi = (viewBMI.bodyInfoPanel.getWeight() / (Math.pow(height, 2)));
-                    viewBMI.bmiResult.bmiLabel.setText("BMI: " + String.format("%.2f", viewBMI.bmiResult.bmi));
+                    viewBMI.bmiResult.bmiLabel.setText(ModelBMI.BMI_LABEL + String.format("%.2f", viewBMI.bmiResult.bmi));
                     viewBMI.bmiResult.setWeightStatus();
-                    viewBMI.bmiResult.weightStatusLabel.setText("Weight status: " + viewBMI.bmiResult.weightStatus.toString());
+                    viewBMI.bmiResult.weightStatusLabel.setText(ModelBMI.WEIGHT_STATUS_LABEL + viewBMI.bmiResult.weightStatus.toString());
                     height *= 100;
-                    double idealWeight = (((height - 100 + (viewBMI.personalInfoPanel.getAge() / 10)) * 0.9 * viewBMI.bodyInfoPanel.getSlimness()) * 100) / 100;
-                    viewBMI.bmiResult.idealWeightLabel.setText("Your ideal weight: " + idealWeight);
+                    double idealWeight = (((height - 100 + (viewBMI.personalInfoPanel.getAge() / 10)) * 0.9 * viewBMI.bodyInfoPanel.getSlimness()));
+                    viewBMI.bmiResult.idealWeightLabel.setText(ModelBMI.IDEAL_WEIGHT_LABEL+  String.format("%.2f", idealWeight));
 
                 } catch (NullPointerException | NumberFormatException exception){
-                    JOptionPane.showMessageDialog(viewBMI,"Invalid input please try again");
+                    viewBMI.showMessageDialog(ModelBMI.ERROR_CODE_INVALID_INPUT);
                   }
             });
 
 
         viewBMI.clear.addActionListener(e->{
-            viewBMI.personalInfoPanel.reset();
-            viewBMI.bodyInfoPanel.reset();
-            viewBMI.bmiResult.reset();
+            viewBMI.personalInfoPanel.clear();
+            viewBMI.bodyInfoPanel.clear();
+            viewBMI.bmiResult.clear();
         });
 
         viewBMI.bodyInfoPanel.heightSlider.addChangeListener(e -> {

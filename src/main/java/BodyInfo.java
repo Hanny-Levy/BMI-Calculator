@@ -4,33 +4,29 @@ public class BodyInfo extends JPanel  {
      final TextField actualWeightField;
      ButtonGroup bodyFrameGroup;
      JRadioButton small , medium , large;
-     double slimness;
-     Label heightLabel;
+     double slimness; int height;
+    Label heightLabel;
      JSlider heightSlider ;
-     int height;
 
     public BodyInfo(){
         this.setLayout(null);
         this.setBodyFrame();
         this.setBackground(ModelBMI.LIGHT_PURPLE);
 
-        Label actualWeightLabel = new Label("Actual weight:", ModelBMI.START_X, 110);
+        Label actualWeightLabel = new Label(ModelBMI.ACTUAL_WEIGHT_LABEL, ModelBMI.START_X, ModelBMI.START_Y+3*ModelBMI.SPACE);
         this.add(actualWeightLabel);
-        this.actualWeightField=new TextField(ModelBMI.START_X,140);
+        this.actualWeightField=new TextField(ModelBMI.START_X,ModelBMI.START_Y+4*ModelBMI.SPACE);
         this.add(actualWeightField);
-        this.actualWeightField.addActionListener(e -> {
-
-        });
 
         this.setHeightSlider();
         this.setPreferredSize(ModelBMI.PANEL_DIMENSION);
 
     }
 
-    public void reset(){
-        this.actualWeightField.reset();
+    public void clear(){
+        this.actualWeightField.clear();
         this.bodyFrameGroup.clearSelection();
-        this.heightSlider.setValue(140);
+        this.heightSlider.setValue(ModelBMI.HEIGHT_SLIDER_MINIMUM_VALUE);
     }
 
     public double getWeight() {
@@ -39,35 +35,31 @@ public class BodyInfo extends JPanel  {
     }
 
     public void setHeightSlider() {
-        this.heightLabel=new Label("Height: 140 cm",ModelBMI.START_X,170);
+        this.heightLabel=new Label(ModelBMI.HEIGHT_LABEL_DEFAULT_TEXT,ModelBMI.START_X,ModelBMI.START_Y+5*ModelBMI.SPACE);
         this.add(heightLabel);
 
-        this.heightSlider=new JSlider(JSlider.HORIZONTAL, 140, 190, 140);
-        this.heightSlider.setMajorTickSpacing (10);
-        this.heightSlider.setMinorTickSpacing (5);
+        this.heightSlider=new JSlider(JSlider.HORIZONTAL, ModelBMI.HEIGHT_SLIDER_MINIMUM_VALUE, ModelBMI.HEIGHT_SLIDER_MAX_VALUE, ModelBMI.HEIGHT_SLIDER_MINIMUM_VALUE);
+        this.heightSlider.setMajorTickSpacing (ModelBMI.HEIGHT_SLIDER_MAJOR_TICK_SPACING);
+        this.heightSlider.setMinorTickSpacing (ModelBMI.HEIGHT_SLIDER_MINOR_TICK_SPACING);
         this.heightSlider.setPaintTicks (true);
         this.heightSlider.setPaintLabels (true);
-        this.heightSlider.addChangeListener(e -> {
-                    this.height= this.heightSlider.getValue();
-                    this.heightLabel.setText("Height: "+height + " cm");
-                }
-        );
-        this.heightSlider.setBounds(ModelBMI.START_X,200,ModelBMI.PANEL_WIDTH,100);
+
+        this.heightSlider.setBounds(ModelBMI.START_X,ModelBMI.START_Y+6*ModelBMI.SPACE-10,ModelBMI.PANEL_WIDTH,ModelBMI.PANEL_HEIGHT/6);
         this.heightSlider.setBackground(ModelBMI.LIGHT_PURPLE);
         this.add(heightSlider);    }
 
 
     public void setBodyFrame() {
-        Label bodyFrame = new Label("Body-frame:", ModelBMI.START_X, 20);
+        Label bodyFrame = new Label(ModelBMI.BODY_FRAME_LABEL, ModelBMI.START_X, ModelBMI.START_Y);
         this.add(bodyFrame);
 
-        this.small=new JRadioButton("small" );
-        this.small.setBounds(ModelBMI.START_X,40,ModelBMI.LABEL_WIDTH,ModelBMI.LABEL_HEIGHT);
-        this.medium=new JRadioButton("medium" );
-        this.medium.setBounds(ModelBMI.START_X,60,ModelBMI.LABEL_WIDTH,ModelBMI.LABEL_HEIGHT);
+        this.small=new JRadioButton(ModelBMI.BODY_FRAME_FIRST_VALUE );
+        this.small.setBounds(ModelBMI.START_X,ModelBMI.START_Y+ModelBMI.SPACE-10,ModelBMI.LABEL_WIDTH,ModelBMI.LABEL_HEIGHT);
+        this.medium=new JRadioButton(ModelBMI.BODY_FRAME_SECOND_VALUE );
+        this.medium.setBounds(ModelBMI.START_X,ModelBMI.START_Y+ModelBMI.SPACE+10,ModelBMI.LABEL_WIDTH,ModelBMI.LABEL_HEIGHT);
 
-        this.large=new JRadioButton("large" );
-        this.large.setBounds(ModelBMI.START_X,80,ModelBMI.LABEL_WIDTH,ModelBMI.LABEL_HEIGHT);
+        this.large=new JRadioButton(ModelBMI.BODY_FRAME_THIRD_VALUE );
+        this.large.setBounds(ModelBMI.START_X,ModelBMI.START_Y+2*ModelBMI.SPACE,ModelBMI.LABEL_WIDTH,ModelBMI.LABEL_HEIGHT);
 
 
         this.bodyFrameGroup = new ButtonGroup();

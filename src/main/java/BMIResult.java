@@ -17,13 +17,13 @@ public class BMIResult extends JPanel {
         this.setBackground(ModelBMI.LIGHT_PURPLE);
         this.setLayout(null);
         this.pictures =new Pictures();
-        this.bmiLabel=new Label("",10,20);
+            this.bmiLabel=new Label(ModelBMI.BMI_LABEL_DEFAULT_VALUE,ModelBMI.START_X,ModelBMI.START_Y);
         this.add(bmiLabel);
-        this.weightStatusLabel=new Label("");
-        this.weightStatusLabel.setBounds(10,50, ModelBMI.PANEL_WIDTH, ModelBMI.LABEL_HEIGHT);
+        this.weightStatusLabel=new Label(ModelBMI.WEIGHT_STATUS_DEFAULT_VALUE);
+        this.weightStatusLabel.setBounds(ModelBMI.START_X,ModelBMI.START_X+ModelBMI.SPACE, ModelBMI.PANEL_WIDTH, ModelBMI.LABEL_HEIGHT);
         this.add(weightStatusLabel);
-        this.idealWeightLabel=new Label("");
-        this.idealWeightLabel.setBounds(10,80, ModelBMI.PANEL_WIDTH, ModelBMI.LABEL_HEIGHT);
+        this.idealWeightLabel=new Label(ModelBMI.IDEAL_WEIGHT_DEFAULT_VALUE);
+        this.idealWeightLabel.setBounds(ModelBMI.START_X,ModelBMI.START_X+2*ModelBMI.SPACE, ModelBMI.PANEL_WIDTH, ModelBMI.LABEL_HEIGHT);
         this.add(idealWeightLabel);
 
     }
@@ -55,10 +55,10 @@ public class BMIResult extends JPanel {
     }
 
     // Resetting labels
-    public void reset(){
-        this.idealWeightLabel.setText("");
-        this.bmiLabel.setText("");
-        this.weightStatusLabel.setText("");
+    public void clear(){
+        this.idealWeightLabel.setText(ModelBMI.IDEAL_WEIGHT_DEFAULT_VALUE);
+        this.bmiLabel.setText(ModelBMI.BMI_LABEL_DEFAULT_VALUE);
+        this.weightStatusLabel.setText(ModelBMI.WEIGHT_STATUS_DEFAULT_VALUE);
     }
 
     // Painting images

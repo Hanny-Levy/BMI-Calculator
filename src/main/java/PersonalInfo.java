@@ -11,28 +11,28 @@ public class PersonalInfo extends JPanel {
         this.setLayout(null);
         this.setBackground(ModelBMI.LIGHT_PURPLE);
 
-        Label firstNameL = new Label("First Name:", ModelBMI.START_X, 20);
+        Label firstNameL = new Label(ModelBMI.FIRST_NAME_LABEL, ModelBMI.START_X, ModelBMI.START_Y);
         this.add(firstNameL);
-        this.firstNameF=new TextField(ModelBMI.START_X,50);
+        this.firstNameF=new TextField(ModelBMI.START_X,ModelBMI.START_Y+ModelBMI.SPACE);
         this.add(firstNameF);
 
-        Label lastNameL = new Label("Last Name:", ModelBMI.START_X, 80);
+        Label lastNameL = new Label(ModelBMI.LAST_NAME_LABEL, ModelBMI.START_X, ModelBMI.START_Y+2*ModelBMI.SPACE);
         this.add(lastNameL);
-        this.lastNameF=new TextField(ModelBMI.START_X,110);
+        this.lastNameF=new TextField(ModelBMI.START_X,ModelBMI.START_Y+3*ModelBMI.SPACE);
         this.add(lastNameF);
 
-        Label ageL = new Label("Age:", ModelBMI.START_X, 140);
+        Label ageL = new Label(ModelBMI.AGE_LABEL, ModelBMI.START_X, ModelBMI.START_Y+4*ModelBMI.SPACE);
         this.add(ageL);
-        this.ageF=new TextField(ModelBMI.START_X,170);
+        this.ageF=new TextField(ModelBMI.START_X,ModelBMI.START_Y+5*ModelBMI.SPACE);
         this.add(ageF);
 
-        Label gender = new Label("Gender :", ModelBMI.START_X, 200);
+        Label gender = new Label(ModelBMI.GENDER_LABEL, ModelBMI.START_X, ModelBMI.START_Y+6*ModelBMI.SPACE);
         this.add(gender);
 
-        JRadioButton female = new JRadioButton("female");
-        female.setBounds(ModelBMI.START_X,230, ModelBMI.LABEL_WIDTH, ModelBMI.LABEL_HEIGHT);
-        JRadioButton male = new JRadioButton("male");
-        male.setBounds(ModelBMI.START_X,250, ModelBMI.LABEL_WIDTH, ModelBMI.LABEL_HEIGHT);
+        JRadioButton female = new JRadioButton(ModelBMI.GENDER_FIRST_VALUE);
+        female.setBounds(ModelBMI.START_X,ModelBMI.START_Y+6*ModelBMI.SPACE+20, ModelBMI.LABEL_WIDTH, ModelBMI.LABEL_HEIGHT);
+        JRadioButton male = new JRadioButton(ModelBMI.GENDER_SECOND_VALUE);
+        male.setBounds(ModelBMI.START_X,ModelBMI.START_Y+7*ModelBMI.SPACE+10, ModelBMI.LABEL_WIDTH, ModelBMI.LABEL_HEIGHT);
 
         this.genderGroup = new ButtonGroup();
         this.genderGroup.add (female);
@@ -50,10 +50,10 @@ public class PersonalInfo extends JPanel {
     }
 
 
-    public void reset(){
-        this.firstNameF.reset();
-        this.lastNameF.reset();
-        this.ageF.reset();
+    public void clear(){
+        this.firstNameF.clear();
+        this.lastNameF.clear();
+        this.ageF.clear();
         this.genderGroup.clearSelection();
 
     }

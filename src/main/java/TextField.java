@@ -9,8 +9,8 @@ public class TextField extends JTextField{
         this.setBounds(x,y,WIDTH,HEIGHT);
     }
 
-    public void reset(){
-        this.setText(null);
+    public void clear(){
+        this.setText(ModelBMI.TEXT_FIELD_DEFAULT_VALUE);
     }
 
 

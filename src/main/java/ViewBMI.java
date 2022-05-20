@@ -45,7 +45,7 @@ public class ViewBMI extends JFrame {
 
     public void setFrame(){
         // Setting frame
-        this.setTitle("BMI Calculator");
+        this.setTitle(ModelBMI.FRAME_TITLE);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setSize(new Dimension(ModelBMI.FRAME_WIDTH, ModelBMI.FRAME_HEIGHT));
@@ -55,8 +55,8 @@ public class ViewBMI extends JFrame {
 
     public void setSendInfoPanel(){
         // Setting buttons reset and submit and adding them to sentInfo panel and to primary panel.
-        clear = new JButton("Reset");
-        submit = new JButton("Submit");
+        clear = new JButton(ModelBMI.CLEAR_BUTTON);
+        submit = new JButton(ModelBMI.SUBMIT_BUTTON);
 
 
         this.sendInfoPanel=new JPanel();
@@ -64,6 +64,15 @@ public class ViewBMI extends JFrame {
         this.sendInfoPanel.add(submit);
         this.sendInfoPanel.setBackground(ModelBMI.DARK_PURPLE);
 
+    }
+
+    public void showMessageDialog(int errorCode){
+        if (errorCode==ModelBMI.ERROR_CODE_PERSONAL_DETAILS_NOT_FOUND){
+            JOptionPane.showMessageDialog(this,ModelBMI.ERROR_MASSAGE_PERSONAL_DETAILS_NOT_FOUND);
+        }
+        if (errorCode==ModelBMI.ERROR_CODE_INVALID_INPUT){
+            JOptionPane.showMessageDialog(this,ModelBMI.ERROR_MASSAGE_INVALID_INPUT);
+        }
     }
 
 
